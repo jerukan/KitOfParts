@@ -24,7 +24,6 @@ public class Drive extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		
+		drive.arcadeDrive(hardware.robotJoystick);
 	}
-
 }
