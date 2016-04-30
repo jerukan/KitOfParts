@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team5026.robot.Hardware;
+import org.usfirst.frc.team5026.robot.commands.JoystickArcadeDrive;
 
 public class Drive extends Subsystem {
 	private Hardware hardware;
@@ -24,6 +25,6 @@ public class Drive extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		drive.arcadeDrive(hardware.robotJoystick);
+		setDefaultCommand(new JoystickArcadeDrive(hardware.robotJoystick));
 	}
 }
