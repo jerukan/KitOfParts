@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5026.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
+import org.usfirst.frc.team5026.robot.commands.DriveForward;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -33,5 +33,7 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	public OI() {
+		Robot.hardware.button1.whenPressed(new DriveForward(5));
+	}
 }
-

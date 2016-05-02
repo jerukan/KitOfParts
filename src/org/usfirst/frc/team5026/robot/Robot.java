@@ -31,10 +31,13 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
         chooser = new SendableChooser();
-        drive = new Drive();
         hardware = new Hardware();
+        drive = new Drive();
+        oi = new OI();
+        hardware.leftEncoder.setDistancePerPulse(Constants.encoderDistancePerPulse);
+        hardware.rightEncoder.setDistancePerPulse(Constants.encoderDistancePerPulse);
+
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
     }
@@ -99,6 +102,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        hardware.leftTalon.set(0.3);
+        hardware.rightTalon.set(0.3);
     }
     
     /**

@@ -2,35 +2,40 @@ package org.usfirst.frc.team5026.robot.commands;
 
 import org.usfirst.frc.team5026.robot.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class JoystickArcadeDrive extends Command {
+public class DriveForward extends Command {
 	
-	private Joystick joystick;
+	private double distance;
 	
-	public JoystickArcadeDrive(Joystick joystick) {
+	public DriveForward(double distance) {
 		requires(Robot.drive);
-		this.joystick = joystick;
+		this.distance = distance;
 	}
-
+	
 	@Override
 	protected void initialize() {
+		Robot.hardware.leftEncoder.reset();
+		Robot.hardware.rightEncoder.reset();
 		Robot.drive.stopDriveMotors();
 	}
 
 	@Override
 	protected void execute() {
-		Robot.drive.useArcadeDrive(0.3, 0.3);
+		if(Robot.hardware.leftEncoder.getDistance() < distance) {
+			Robot.drive.setDriveMotors(0.5, 0.5);
+		}
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return Robot.hardware.leftEncoder.getDistance() >= distance;
 	}
 
 	@Override
 	protected void end() {
+		Robot.hardware.leftEncoder.reset();
+		Robot.hardware.rightEncoder.reset();
 		Robot.drive.stopDriveMotors();
 	}
 
@@ -38,5 +43,4 @@ public class JoystickArcadeDrive extends Command {
 	protected void interrupted() {
 		end();
 	}
-
 }
