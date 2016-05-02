@@ -15,6 +15,10 @@ public class Drive extends Subsystem {
 		drive = new RobotDrive(hardware.leftTalon, hardware.rightTalon);
 	}
 	
+	public void useArcadeDrive(double xAxis, double yAxis) {
+		drive.arcadeDrive(xAxis, yAxis);
+	}
+	
 	public void setDriveMotors(double leftMotor, double rightMotor) {
 		drive.setLeftRightMotorOutputs(leftMotor, rightMotor);
 	}

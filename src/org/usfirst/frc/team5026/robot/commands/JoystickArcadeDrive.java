@@ -1,48 +1,42 @@
 package org.usfirst.frc.team5026.robot.commands;
 
-import org.usfirst.frc.team5026.robot.subsystems.Drive;
+import org.usfirst.frc.team5026.robot.Robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class JoystickArcadeDrive extends Command {
 	
 	private Joystick joystick;
-	private Drive drive;
 	
 	public JoystickArcadeDrive(Joystick joystick) {
-		drive = new Drive();
+		requires(Robot.drive);
 		this.joystick = joystick;
 	}
 
 	@Override
 	protected void initialize() {
-		
+		Robot.drive.stopDriveMotors();
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
-		
+		Robot.drive.useArcadeDrive(joystick.getX(), joystick.getY());
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	protected void end() {
-		// TODO Auto-generated method stub
-		
+		Robot.drive.stopDriveMotors();
 	}
 
 	@Override
 	protected void interrupted() {
-		// TODO Auto-generated method stub
-		
+		end();
 	}
 
 }
