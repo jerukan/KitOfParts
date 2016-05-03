@@ -14,10 +14,7 @@ public class Drive extends Subsystem {
 	}
 	
 	public void useArcadeDrive(double xAxis, double yAxis) {
-		//driveRobot.arcadeDrive(xAxis, yAxis);
-		//System.out.println(xAxis);
-		driveRobot.setLeftRightMotorOutputs(0.2, 0.2);
-
+		driveRobot.arcadeDrive(xAxis, yAxis);
 	}
 	
 	public void setDriveMotors(double leftMotor, double rightMotor) {
@@ -30,6 +27,6 @@ public class Drive extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new JoystickArcadeDrive(Robot.hardware.robotJoystick));
+		//setDefaultCommand(new JoystickArcadeDrive(Robot.hardware.robotJoystick));
 	}
 }

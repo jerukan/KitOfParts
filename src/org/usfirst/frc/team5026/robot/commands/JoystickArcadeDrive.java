@@ -21,7 +21,7 @@ public class JoystickArcadeDrive extends Command {
 
 	@Override
 	protected void execute() {
-		Robot.drive.useArcadeDrive(0.3, 0.3);
+		Robot.drive.useArcadeDrive(joystick.getX(), joystick.getY());
 	}
 
 	@Override

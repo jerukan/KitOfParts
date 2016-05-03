@@ -94,6 +94,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	hardware.rightEncoder.reset();
         if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
@@ -102,8 +103,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        hardware.leftTalon.set(0.3);
-        hardware.rightTalon.set(0.3);
+        System.out.println(hardware.leftTalon.getEncVelocity());
     }
     
     /**
