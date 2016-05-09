@@ -103,7 +103,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        System.out.println(hardware.leftTalon.getEncVelocity());
+        System.out.println(hardware.robotJoystick.getY());
     }
     
     /**

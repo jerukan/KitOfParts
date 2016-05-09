@@ -13,4 +13,9 @@ public class Constants {
 	public static final int robotJoystickPort = 0;
 	
 	public static final double encoderDistancePerPulse = (4 * Math.PI) / 256; 
+	
+	public static final double xDeadzone = 0.01;
+	public static final double yDeadzone = 0.15;
+	
+	public static final double motorDeadzone = 0.3;
 }

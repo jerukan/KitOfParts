@@ -1,14 +1,16 @@
 package org.usfirst.frc.team5026.robot;
 
+import org.usfirst.frc.team5026.util.JoystickScaling;
+import org.usfirst.frc.team5026.util.RobotJoystick;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class Hardware {
 	public CANTalon leftTalon;
 	public CANTalon rightTalon;
-	public final Joystick robotJoystick;
+	public final RobotJoystick robotJoystick;
 	public final Encoder leftEncoder;
 	public final Encoder rightEncoder;
 	public final JoystickButton button1;
@@ -17,7 +19,7 @@ public class Hardware {
 		leftTalon = new CANTalon(Constants.leftDriveMotor);
 		rightTalon = new CANTalon(Constants.rightDriveMotor);
 		
-		robotJoystick = new Joystick(Constants.robotJoystickPort);
+		robotJoystick = new RobotJoystick(Constants.robotJoystickPort, Constants.xDeadzone, Constants.yDeadzone, Constants.motorDeadzone, JoystickScaling.HALVED);
 		button1 = new JoystickButton(robotJoystick, 1);
 		
 		
